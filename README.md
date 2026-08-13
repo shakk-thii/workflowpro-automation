@@ -103,3 +103,4 @@ Failures automatically capture a screenshot, a video, and a Playwright trace. Vi
 ```bash
 playwright show-trace reports/traces/<name>.zip
 ```
+
