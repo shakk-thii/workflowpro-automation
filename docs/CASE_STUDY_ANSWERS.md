@@ -1,3 +1,5 @@
+https://docs.google.com/document/d/1lDjJiYWFsY5RSSIJFYYF_N4ZXSepmqoVwAXG_MVODRs/edit?tab=t.0
+
 # **B2B SaaS Platform Testing: Multi-Platform Automation**
 
 **Candidate:** Sadhanandham Shakthikumar 
