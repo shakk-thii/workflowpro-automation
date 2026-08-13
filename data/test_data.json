@@ -1,0 +1,25 @@
+{
+  "checkout": {
+    "valid": {
+      "first_name": "Shakthi",
+      "last_name": "Kumar",
+      "postal_code": "641001"
+    },
+    "invalid": [
+      { "first_name": "", "last_name": "Kumar", "postal_code": "641001", "expected_error": "First Name is required" },
+      { "first_name": "Shakthi", "last_name": "", "postal_code": "641001", "expected_error": "Last Name is required" },
+      { "first_name": "Shakthi", "last_name": "Kumar", "postal_code": "", "expected_error": "Postal Code is required" }
+    ]
+  },
+  "login": {
+    "invalid_credentials": [
+      { "username": "standard_user", "password": "wrong_password", "expected_error": "Username and password do not match" },
+      { "username": "no_such_user", "password": "secret_sauce", "expected_error": "Username and password do not match" },
+      { "username": "", "password": "secret_sauce", "expected_error": "Username is required" },
+      { "username": "standard_user", "password": "", "expected_error": "Password is required" }
+    ]
+  },
+  "expected_counts": {
+    "products_on_inventory_page": 6
+  }
+}
