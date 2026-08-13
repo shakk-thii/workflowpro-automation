@@ -1,0 +1,57 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 2 * * *'   # nightly full run
+
+jobs:
+  smoke:
+    name: Smoke on ${{ matrix.browser }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run smoke tests
+        run: pytest -m smoke --browser ${{ matrix.browser }}
+
+      - name: Upload report and failure artefacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-${{ matrix.browser }}
+          path: reports/
+          retention-days: 14
+
+  full:
+    name: Full suite
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps chromium
+      - run: pytest -n 4          # parallel, tests are independent
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-report
+          path: reports/

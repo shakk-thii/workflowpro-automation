@@ -1,0 +1,34 @@
+# Three things vary independently: environment, tenant, and browser.
+# Keeping them separate means one test file runs anywhere without edits.
+
+environments:
+  demo:
+    base_url: "https://www.saucedemo.com"
+    users:
+      standard:
+        username: "standard_user"
+        password: "secret_sauce"
+      locked_out:
+        username: "locked_out_user"
+        password: "secret_sauce"
+      problem:
+        username: "problem_user"
+        password: "secret_sauce"
+
+  local:
+    base_url: "http://localhost:3000"
+    api_url: "http://localhost:8000/api/v1"
+
+  staging:
+    base_url: "https://staging.workflowpro.com"
+    api_url: "https://staging.workflowpro.com/api/v1"
+
+# Tenants load at different speeds because they hold different amounts
+# of data. One global timeout cannot suit both, so each gets its own.
+tenants:
+  company1:
+    subdomain: "company1"
+    timeout_ms: 5000
+  company2:
+    subdomain: "company2"
+    timeout_ms: 15000

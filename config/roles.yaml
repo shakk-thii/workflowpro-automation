@@ -1,0 +1,20 @@
+# Expected permissions per role. Kept in config so one test can loop over
+# all three and check both what a role CAN do and what it CANNOT.
+# The negative cases matter more. An Employee being able to delete
+# projects is a security bug, and it is the case people forget to test.
+
+roles:
+  admin:
+    can_create_project: true
+    can_delete_project: true
+    can_invite_users: true
+
+  manager:
+    can_create_project: true
+    can_delete_project: false
+    can_invite_users: true
+
+  employee:
+    can_create_project: false
+    can_delete_project: false
+    can_invite_users: false
