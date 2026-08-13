@@ -1,0 +1,24 @@
+# Browser and device settings. Selected with --browser on the command line.
+
+local:
+  chromium:
+    headless: true
+    viewport: { width: 1280, height: 720 }
+  firefox:
+    headless: true
+    viewport: { width: 1280, height: 720 }
+  webkit:
+    headless: true
+    viewport: { width: 1280, height: 720 }
+
+# Real devices through BrowserStack. Not runnable without an account,
+# included to show the intended configuration.
+browserstack:
+  ios_safari:
+    device: "iPhone 14"
+    os_version: "16"
+    browser: "safari"
+  android_chrome:
+    device: "Samsung Galaxy S22"
+    os_version: "12.0"
+    browser: "chrome"

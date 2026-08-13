@@ -48,3 +48,16 @@ def unique_name():
     def _make(prefix="test"):
         return f"{prefix}-{uuid.uuid4().hex[:8]}"
     return _make
+
+@pytest.fixture(scope="session")
+def api_client(config):
+    """HTTP session for API tests.
+
+    Only used by the WorkFlow Pro tests, which are skipped because the
+    API is fictional. Kept so the fixture contract is complete.
+    """
+    from core.api_client import APIClient
+    return APIClient(
+        base_url=config.get("api_url") or "",
+        token=os.getenv("API_TOKEN", "placeholder-token"),
+    )

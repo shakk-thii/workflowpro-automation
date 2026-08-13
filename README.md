@@ -91,7 +91,7 @@ reports/    generated HTML report, traces, screenshots
 ## Documentation
 
 - [Test Plan](docs/TEST_PLAN.md) — scope, priorities, entry and exit criteria
-- [Testing Approach](docs/TESTING_APPROACH.md) — the full case study answer
+- [Testing Approach](docs/CASE_STUDY_ANSWERS.md) — full written response to Parts 1, 2, and 3
 - [Test Cases](docs/TEST_CASES.md) — the case list with priority
 
 ## Reports
@@ -103,4 +103,5 @@ Failures automatically capture a screenshot, a video, and a Playwright trace. Vi
 ```bash
 playwright show-trace reports/traces/<name>.zip
 ```
+
 

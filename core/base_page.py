@@ -1,5 +1,4 @@
 """Shared behaviour for every page object."""
-from playwright.sync_api import expect
 
 
 class BasePage:
@@ -21,3 +20,4 @@ class BasePage:
 
     def screenshot(self, name):
         self.page.screenshot(path=f"reports/{name}.png")
+
